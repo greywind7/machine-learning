@@ -17,3 +17,15 @@ dep = dataset.iloc[:,-1].values
 
 print(f_mat)
 print(dep)
+
+# Taking care of missing data
+
+from sklearn.impute import SimpleImputer
+# Using mean as the strategy
+imputer = SimpleImputer(missing_values=np.nan,strategy='mean')
+imputer.fit(f_mat[:,1:3])
+# Transform returns the updated values
+f_mat[:,1:3] = imputer.transform(f_mat[:,1:3])
+
+print(f_mat)
+print(dep)
