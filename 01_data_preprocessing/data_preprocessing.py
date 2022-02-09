@@ -29,3 +29,21 @@ f_mat[:,1:3] = imputer.transform(f_mat[:,1:3])
 
 print(f_mat)
 print(dep)
+
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+# transformers has 3 arguments, 1st encoder, 2nd encoding function, third, the indexes that need to be encoded
+# remainder is for keeping (passthrough) or deleting (drop) the rest of the columns. Defaults to drop
+ct = ColumnTransformer(transformers=[('encoder',OneHotEncoder(),[0])],remainder="passthrough")
+f_mat = np.array(ct.fit_transform(f_mat))
+
+print(f_mat)
+
+from sklearn.preprocessing import LabelEncoder
+
+# LabelEncoder only transforms only vectors so no prob
+le = LabelEncoder()
+dep = le.fit_transform(dep)
+
+print(dep)
