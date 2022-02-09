@@ -47,3 +47,17 @@ from sklearn.model_selection import train_test_split
 # random_state gives the seed
 (X_train,X_test, Y_train,Y_test) = train_test_split(f_mat,dep,test_size = 0.2, random_state = 1)
 
+# Standardization 
+# (x - mean(x)) / std_dev(x)
+# Normalization 
+# (x - min(x)) / (max(x) - min(x)) 
+
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+# do NOT feature scaling on dummy variables
+X_train[:,3:] = sc.fit_transform(X_train[:,3:])
+# test set must be same scaled as the training set
+X_test[:,3:] = sc.transform(X_test[:,3:])
+
+print(X_train,'\n')
+print(X_test)
