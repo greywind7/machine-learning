@@ -16,15 +16,14 @@ from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 x_train = sc.fit_transform(x_train)
 
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import LinearSVC
 
-classifier = KNeighborsClassifier()
+# For a general SVC, use SVC class with a different kernel
+classifier = LinearSVC(random_state=0)
 classifier.fit(x_train,y_train)
 
 y_pred = classifier.predict(sc.transform(x_test))
 print(y_pred)
-# comp = np.concatenate((y_test.reshape(len(y_test),1), y_pred.reshape(len(y_pred),1)),1)
-# print(comp)
 
 from sklearn.metrics import confusion_matrix,accuracy_score
 print(confusion_matrix(y_test,y_pred))
