@@ -20,7 +20,6 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
-# For a general SVC, use SVC class with a different kernel
 classifier = GaussianNB()
 classifier.fit(x_train,y_train)
 
